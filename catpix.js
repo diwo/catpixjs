@@ -4,30 +4,19 @@
 var getPixels = require('get-pixels');
 var colors = require('ansi-256-colors');
 
-// Handleable get-pixels dtype values
-var dtypeMap = {
-  int8: 8,
-  int16: 16,
-  int32: 32,
-  uint8: 8,
-  uint16: 16,
-  uint32: 32,
-  uint8_clamped: 8
-};
-
-// ansi-256-colors range of values per channel
-var colorRange = 6;
+var getPixelsBitsPerChannel = 8;
+var displayColorRange = 6; // ansi-256-colors range of values per channel
 var upperHalfBlockChar = String.fromCharCode(0x2580);
-var filename = process.argv[2];
 
+var filename = process.argv[2];
 if (!filename) {
   console.error('Usage: catpix <FILE>');
   process.exit(1);
 }
 
 getPixels(filename, function(err, pixels) {
-  if (err || !dtypeMap[pixels.dtype]) {
-    console.error('Error: File format not supported');
+  if (err) {
+    console.error('Error: Unable to parse file \'' + filename + '\'');
     process.exit(1);
   }
 
@@ -35,7 +24,7 @@ getPixels(filename, function(err, pixels) {
   var height = pixels.shape[1];
   var channels = pixels.shape[2];
 
-  var colorNormalizeFactor = colorRange / Math.pow(2, dtypeMap[pixels.dtype]);
+  var colorNormalizeFactor = displayColorRange / Math.pow(2, getPixelsBitsPerChannel);
 
   seq(height)
     .map(function(y) {
@@ -49,7 +38,7 @@ getPixels(filename, function(err, pixels) {
         })
         .map(function(components) {
           if (components.length > 3) {
-            var normalizedAlpha = components.pop() / (colorRange-1);
+            var normalizedAlpha = components.pop() / (displayColorRange-1);
             return components
               .map(function(component) {
                 return component * normalizedAlpha;

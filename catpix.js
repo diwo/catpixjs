@@ -31,7 +31,7 @@ getPixels(filename, function(err, pixels) {
     process.exit(1);
   }
 
-  var width = Math.min(pixels.shape[0], 180);
+  var width = Math.min(pixels.shape[0], process.stdout.columns);
   var height = pixels.shape[1];
   var channels = pixels.shape[2];
 

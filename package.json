@@ -2,9 +2,9 @@
   "name": "catpixjs",
   "version": "1.0.0",
   "description": "Display images in terminal using Javascript.",
-  "main": "catpix.js",
+  "main": "lib/catpix.js",
   "bin": {
-    "catpix": "./catpix.js"
+    "catpix": "lib/cli.js"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,7 @@
+{
+  "node": true,
+  "mocha": true,
+  "quotmark": "single",
+  "undef": true,
+  "unused": true
+}

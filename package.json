@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Display images in terminal using Javascript.",
   "main": "lib/catpix.js",
+  "scripts": {
+    "test": "mocha"
+  },
   "bin": {
     "catpix": "lib/cli.js"
   },
@@ -32,5 +35,9 @@
   "dependencies": {
     "ansi-256-colors": "^1.1.0",
     "get-pixels": "^3.2.2"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "mocha": "^2.2.5"
   }
 }

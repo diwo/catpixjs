@@ -1,7 +1,7 @@
 {
   "name": "catpixjs",
   "version": "1.0.2",
-  "description": "Display images in terminal using Javascript.",
+  "description": "Transform images into text to be displayed in the terminal.",
   "main": "lib/catpix.js",
   "scripts": {
     "test": "mocha"

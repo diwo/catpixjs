@@ -1,6 +1,6 @@
 {
   "name": "catpixjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Display images in terminal using Javascript.",
   "main": "lib/catpix.js",
   "scripts": {
